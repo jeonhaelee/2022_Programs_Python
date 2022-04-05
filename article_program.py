@@ -14,8 +14,52 @@ def print_articles():
         print("제목 : {}".format(target["title"]))
         print("======================================")
 
+def add_article():
+    
+    title = input("제목을 입력해주세요 : ")
+    body = input("내용을 입력해주세요 : ")
+        
+    article = {"title" : title, "body" : body}
+    articles.append(article)
+        
+    print("게시물이 저장되었습니다.")
 
+def update_article():
+    no = input("수정할 게시물 번호 : ")
+    no = int(no)
+        
+    target_idx = no-1
+    if target_idx >= len(articles):
+        print("없는 게시물 번호입니다.")
+            
+    else:
+        update_target = articles[target_idx]
+        
+        new_title = input("새제목 : ")
+        new_body = input("새내용 : ")
+        update_target["title"] = new_title
+        update_target["body"] = new_body
+        
+        print("수정이 완료되었습니다.")
+        print_articles()
 
+def delete_article():
+    no = input("삭제할 게시물 번호 : ")
+    no = int(no)
+    
+    target_idx = no-1
+    if target_idx >= len(articles):
+        print("없는 게시물 번호입니다.")
+        
+    else:
+        del articles[target_idx]
+
+        print("삭제가 완료되었습니다.")
+        print_articles()
+        
+        
+        
+        
 while True:
     cmd = input("명령어를 입력해주세요 : ")
     
@@ -29,51 +73,16 @@ while True:
         break
     
     elif cmd == "add":
-        
-        title = input("제목을 입력해주세요 : ")
-        body = input("내용을 입력해주세요 : ")
-        
-        article = {"title" : title, "body" : body}
-        articles.append(article)
-        
-        print("게시물이 저장되었습니다.")
+        add_article()
         
     elif cmd == "list":
         print_articles()
     
     elif cmd == "update":
-        
-        no = input("수정할 게시물 번호 : ")
-        no = int(no)
-        
-        target_idx = no-1
-        if target_idx >= len(articles):
-            print("없는 게시물 번호입니다.")
-            
-        else:
-            update_target = articles[target_idx]
-        
-            new_title = input("새제목 : ")
-            new_body = input("새내용 : ")
-            update_target["title"] = new_title
-            update_target["body"] = new_body
-        
-            print("수정이 완료되었습니다.")
-            print_articles()
+        update_article()
     
     elif cmd == "delete":
-        no = input("삭제할 게시물 번호 : ")
-        no = int(no)
-        
-        target_idx = no-1
-        if target_idx >= len(articles):
-            print("없는 게시물 번호입니다.")
-            
-        else:
-            del articles[target_idx]
-
-            print("삭제가 완료되었습니다.")
-            print_articles()
+        delete_article()
         
     else :
         print("알 수 없는 명령어. 명령어 목록을 보시려면 help를 입력하세요.")
