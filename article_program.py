@@ -57,16 +57,19 @@ def delete_article():
         print("삭제가 완료되었습니다.")
         print_articles()
         
-        
+def print_help():
+    print("도움말 목록")
+    print("add : 게시물 등록")
+    print("list : 게시물 목록 조회")
+    print("update : 게시물 수정")
+    print("delete : 게시물 삭제")
         
         
 while True:
     cmd = input("명령어를 입력해주세요 : ")
     
     if cmd == "help":
-        print("도움말 목록")
-        print("add : 게시물 등록")
-        print("list : 게시물 목록 조회")
+        print_help()
         
     elif cmd == "exit":
         print("프로그램을 종료합니다.")
